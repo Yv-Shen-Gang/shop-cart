@@ -1,1 +1,6 @@
 # shop-cart
+*.log
+*.idea
+go.mod
+go.sum
+go.work

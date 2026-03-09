@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "./product";
+
+message AddCartReq {
+  string SpuId = 1;
+  string SkuId = 2;
+  int64 Uid = 3;
+  int64 Count = 4;
+}
+
+message AddCartResp {
+}
+
+message CartListReq {
+  int64 Uid = 1;
+}
+
+message CartListResp {
+  repeated CartInfo list = 1;
+}
+
+message CartInfo {
+  float price = 1;
+  string sku_id = 2;
+  string sku_name = 3;
+  string spu_id = 4;
+  string spu_name = 5;
+  int64 stock = 6;
+}
+
+service Product {
+  rpc AddCart(AddCartReq) returns (AddCartResp);
+  rpc CartList(CartListReq) returns (CartListResp);
+}
